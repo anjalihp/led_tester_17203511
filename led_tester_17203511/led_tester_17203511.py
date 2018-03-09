@@ -13,6 +13,7 @@ class ledTester:
 
     def apply(self,instructions):
         cmd,x1_value,y1_value,x2_value,y2_value=self.parseEachLine(instructions)
+        #print(cmd,x1_value,y1_value,x2_value,y2_value)
         
         if x1_value<0:
             x1_value=0
@@ -49,12 +50,19 @@ class ledTester:
                         self.grid_element[i][j]=1  
                     else:
                         self.grid_element[i][j]=0
-            
+        elif cmd=="BadString":
+            for i in range(x1_value,x2_value+1):
+                for j in range(y1_value,y2_value+1):
+                    self.grid_element[i][j]=0
 
     def parseEachLine(self,message):
-        pattern=re.compile(".*(turn on|turn off|switch)\s*([+-]?\d+)\s*,\s*([+-]?\d+)\s*through\s*([+-]?\d+)\s*,\s*([+-]?\d+).*") 
+        pattern=re.compile(".*(turn on|turn off|switch|switcy)\s*([+-]?\d+)\s*,\s*([+-]?\d+)\s*through\s*([+-]?\d+)\s*,\s*([+-]?\d+).*") 
+       # print(pattern)
+        #print(pattern.search(str(message))[1],int(pattern.search(message)[2]))
         while(pattern.search(str(message))):
             return(pattern.search(str(message))[1],int(pattern.search(message)[2]),int(pattern.search(message)[3]),int(pattern.search(message)[4]),int(pattern.search(message)[5]))
+        #print(pattern.search(str(message))[1])
+        return("BadString",0,0,0,0)
         
     
     def countOccupied(self):
