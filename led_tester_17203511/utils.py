@@ -2,11 +2,18 @@
 '''
 @author: Anjali Hullenahalli Papegowda
 '''
+import os
 from urllib.request import urlopen
 def parseFile(input):
       
     if input.startswith("http"):
         N, instructions = None, []
+        #Referenced from https://stackoverflow.com/questions/7160737/python-how-to-validate-a-url-in-python-malformed-or-not
+        try:
+            urlopen(input)
+        except:
+            print("URL is invalid")
+            return 0,0
         count=0
         for s in urlopen(input):
             s=s.decode("utf-8")
@@ -21,12 +28,15 @@ def parseFile(input):
         
                        
     else:
+        if not os.path.isfile(input):
+            print("File does not  exists")
+        else:
         # read from disk
-        N, instructions = None, []
-        with open(input, 'r') as f:
-            N = int(f.readline())
-            for line in f.readlines():
-                instructions.append(line)
+            N, instructions = None, []
+            with open(input, 'r') as f:
+                N = int(f.readline())
+                for line in f.readlines():
+                    instructions.append(line)
         # haven't written the code yet...
-        return N, instructions
-    return
+            return N, instructions
+    return 0,0  
