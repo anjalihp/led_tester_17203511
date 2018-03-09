@@ -4,12 +4,17 @@
 '''
 from urllib.request import urlopen
 def parseFile(input):
-    print(input)    
+        
     if input.startswith("http"):
-        for line in urlopen(input):
-            line = line.decode("utf-8")
-            
-                     
+        print("I am here")
+        N, instructions = None, []
+        with urlopen(input) as u:
+            N = int(u.readline())
+            print(N)
+          # for line in u.readline():
+         #      instructions.append(line)
+        #print(instructions)
+        pass          
                 
         
                        

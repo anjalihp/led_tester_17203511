@@ -20,8 +20,6 @@ def main(input=None):
     for instruction in instructions:
         lights.apply(instruction)    
     
-    
-        
         
     print('#occupied: ', lights.countOccupied()) 
     
