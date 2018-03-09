@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
 """Console script for led_tester_17203511."""
-
+import sys
 import click
-from led_tester_17203511 import ledTester
-from utils import parseFile
+sys.path.append('.')
+from  utils import *
+from led_tester_17203511.led_tester_17203511 import ledTester
 click.disable_unicode_literals_warning = True
 
 @click.command()
@@ -26,5 +27,4 @@ def main(input=None):
     return input
 
 if __name__ == "__main__":
-    import sys
     sys.exit(main())
