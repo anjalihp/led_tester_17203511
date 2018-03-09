@@ -13,7 +13,7 @@ def parseFile(input):
             s=s.strip()
             if count==0:
                 N = int(s)
-                
+                print()
                 count=count+1
             elif len(s)>1:
                 instructions.append(s)
