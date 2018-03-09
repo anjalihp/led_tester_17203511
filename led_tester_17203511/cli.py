@@ -21,7 +21,7 @@ def main(input=None):
         lights.apply(instruction)    
     
         
-    print('#occupied: ', lights.countOccupied()) 
+    print('#LEDs TURNED ON: ', lights.countOccupied()) 
     
     return input
 
