@@ -23,7 +23,7 @@ def main(input=None):
     
         
     print('#LEDs TURNED ON: ', lights.countOccupied()) 
-    
+    print() 
     return input
 
 if __name__ == "__main__":
